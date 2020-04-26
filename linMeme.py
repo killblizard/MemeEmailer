@@ -9,13 +9,7 @@ from email.mime.multipart import MIMEMultipart
 #with this implementation source dir is the ripme folder and dest being img folder
 def moveMeme(sourceDir, destDir):
     # files = glob.glob(folder to remove)
-    files = glob.glob('memesToSend/*')
-    for f in files :
-        os.remove(f)
-        # movees the memes from the sourcedir to the img folder
-    files2 = os.listdir(sourceDir)
-   # for y in files2:
-      #  shutil.move(sourceDir+y,destDir)
+    os.system('find /home/kb/MEME/rips/reddit_sub_memes/ . -maxdepth 1 -type f |head -15| xargs mv -t "/home/kb/MEME/memesToSend"')
 
 def sendMeme(psWd):
     # some variables for ease of use
@@ -23,7 +17,7 @@ def sendMeme(psWd):
     you = ['rishsen2000@gmail.com', 'rsenstudios@gmail.com']
     password = psWd# best not to save password on file for security purposes
     msg = MIMEMultipart()
-    msg['Subject'] = 'Memes(Version 2.1)'
+    msg['Subject'] = 'Meme Sender Bot(Version 2.3)'
     msg['From'] = me
     msg['To'] = ", ".join(you)
 
@@ -49,7 +43,6 @@ def sendMeme(psWd):
 
 
 
-
-#moveMeme('/home/kb/MEME/rips/reddit_sub_memes/','memesToSend/')
 psWd = sys.argv[1]
 sendMeme(psWd)
+moveMeme('/home/kb/MEME/rips/reddit_sub_memes/','memesToSend/')
