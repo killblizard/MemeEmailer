@@ -6,23 +6,21 @@ from email.mime.multipart import MIMEMultipart
 
 #Method to remove any old files from the meme folder
 #replaces with a fresh batch of memes
-#with this implementation source dir is the ripme folder and dest being img folder
+
 def moveMeme():
-    # files = glob.glob(folder to remove)
-    #file = glob.glob("/home/kb/MEME/memestoSend/*")
-    #for f in file:
-     #   os.remove(f)
-    for root,dirs, files in os.walk('/home/kb/MEME/memesToSend'):
+   
+    for root,dirs, files in os.walk('folder'):#<-- this folder is the image folder you want to send to 
         for f in files:
-            os.unlink(os.path.join(root,f))
+            os.unlink(os.path.join(root,f)) # removes all old images (for automation) 
         for d in dirs:
             shutil.rmtree(os.path.join(root,d))
-    os.system('find /home/kb/MEME/rips/reddit_sub_memes/ . -maxdepth 1 -type f |head -15| xargs mv -t "/home/kb/MEME/memesToSend"')
+    os.system('find folder/ . -maxdepth 1 -type f |head -15| xargs mv -t "destfolder"') # this is for if you have a folder of images but only want to select some for the email 
+    #               ^where your taking pictures from                       ^where you want the memes
 
 def sendMeme(psWd):
     # some variables for ease of use
-    me = "rsenstudios@gmail.com"
-    you = ['rishsen2000@gmail.com', 'rsenstudios@gmail.com']
+    me = "email@gmail.com"
+    you = ['email@gmail.com', 'email@gmail.com']
     password = psWd# best not to save password on file for security purposes
     msg = MIMEMultipart()
     msg['Subject'] = 'Meme Sender Bot(Version 2.4)'

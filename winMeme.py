@@ -9,18 +9,18 @@ from email.mime.multipart import MIMEMultipart
 #with this implementation source dir is the ripme folder and dest being img folder
 def moveMeme(sourceDir, destDir): 
     # files = glob.glob(folder to remove)
-    files = glob.glob('folder/*')
+    files = glob.glob('folder/*') # remove line if not automating 
     for f in files : 
         os.remove(f)
-        # movees the memes from the sourcedir to the img folder
+ # movees the memes from the sourcedir to the img folder
     files2 = os.listdir(sourceDir)
     for y in files2:
         shutil.move(sourceDir+y,destDir)
 
 def sendMeme(psWd):
     # some variables for ease of use
-    me = "rsenstudios@gmail.com"
-    you = ['rishsen2000@gmail.com', 'rsenstudios@gmail.com']
+    me = "email@gmail.com" # your email
+    you = ['email@gmail.com', 'email@gmail.com'] # multiple senders
     password = psWd# best not to save password on file for security purposes
     msg = MIMEMultipart()
     msg['Subject'] = 'Memes(Version 2.1)'
@@ -50,6 +50,6 @@ def sendMeme(psWd):
 
 
 
-moveMeme('img/','folder/')
+moveMeme('folder/','folder/') # folders for moving memes
 psWd = sys.argv[1]
 sendMeme(psWd)
