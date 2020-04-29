@@ -12,6 +12,6 @@ you need to allow less secure apps on your gmail account to allow smtp access to
 
 
 to use 
-'''
+```
 python lin/winMeme.py "your password"
-'''
+```
